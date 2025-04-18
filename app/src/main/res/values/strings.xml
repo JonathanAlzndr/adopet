@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Adopet</string>
+    <string name="register_title">Buat Akun Anda</string>
+    <string name="register_subtitle">Lengkapi Profil Anda</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_number">Nomor Telepon</string>
+    <string name="hint_kata_sandi">Kata Sandi</string>
+    <string name="hint_register">Daftar</string>
 </resources>
