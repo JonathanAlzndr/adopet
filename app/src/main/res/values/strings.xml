@@ -7,4 +7,8 @@
     <string name="hint_phone_number">Nomor Telepon</string>
     <string name="hint_kata_sandi">Kata Sandi</string>
     <string name="hint_register">Daftar</string>
+    <string name="hint_sudah_punya_akun">Sudah punya Akun? Masuk</string>
+    <string name="hint_belum_punya_akun">Belum punya Akun? Daftar</string>
+    <string name="hint_login">Masuk</string>
+    <string name="subtitle_login">Temukan hewan yang siap jadi bagian keluargamu</string>
 </resources>
