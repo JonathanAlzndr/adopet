@@ -1,4 +1,4 @@
-package com.adopet.app.ui.factory
+package com.adopet.app.utils
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

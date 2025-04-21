@@ -3,17 +3,21 @@ package com.adopet.app.data.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.adopet.app.data.local.SessionManager
 import com.adopet.app.data.model.RegisterUserRequest
+import com.adopet.app.data.model.UserModel
 import com.adopet.app.data.remote.ApiService
 import com.adopet.app.utils.AppExecutors
 import com.adopet.app.utils.Result
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class UserRepository private constructor(
     private val apiService: ApiService,
-    private val appExecutors: AppExecutors
+    private val appExecutors: AppExecutors,
+    private val pref: SessionManager,
 ) {
 
     fun register(username: String, password: String, email: String, phoneNumber: String)
@@ -39,6 +43,14 @@ class UserRepository private constructor(
         return result
     }
 
+    suspend fun saveSession(user: UserModel) {
+        pref.saveSession(user)
+    }
+
+    fun getSession(): Flow<UserModel> = pref.getSession()
+
+    suspend fun deleteSession() = pref.logout()
+
     companion object {
         private const val TAG = "UserRepository"
 
@@ -47,13 +59,15 @@ class UserRepository private constructor(
 
         fun getInstance(
             apiService: ApiService,
-            appExecutors: AppExecutors
+            appExecutors: AppExecutors,
+            pref: SessionManager
         ): UserRepository {
             if (INSTANCE == null) {
                 synchronized(this) {
                     INSTANCE = UserRepository(
                         apiService,
                         appExecutors,
+                        pref
                     )
                 }
             }
