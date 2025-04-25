@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.adopet.app.R
 import com.adopet.app.data.model.UserModel
 import com.adopet.app.databinding.ActivityLoginBinding
-import com.adopet.app.ui.MainActivity
 import com.adopet.app.ui.register.RegisterActivity
 import com.adopet.app.utils.Result
 import com.adopet.app.utils.ViewModelFactory
