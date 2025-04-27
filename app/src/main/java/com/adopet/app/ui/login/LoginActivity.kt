@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.adopet.app.R
 import com.adopet.app.data.model.UserModel
 import com.adopet.app.databinding.ActivityLoginBinding
+import com.adopet.app.ui.MainActivity
+import com.adopet.app.ui.home.HomeFragment
 import com.adopet.app.ui.register.RegisterActivity
 import com.adopet.app.utils.Result
 import com.adopet.app.utils.ViewModelFactory
@@ -44,8 +46,7 @@ class LoginActivity : AppCompatActivity() {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-
-            if(validateInput(username, password)) {
+            if (validateInput(username, password)) {
                 performLogin(username, password)
             }
         }
@@ -76,12 +77,14 @@ class LoginActivity : AppCompatActivity() {
                 is Result.Error -> {
                     showToast(result.error)
                 }
-                Result.Loading -> { }
+
+                Result.Loading -> {}
                 is Result.Success -> {
                     // setLoading(false)
                     result.data.let {
                         val user = UserModel(username, it.token!!, true)
                         viewModel.saveSession(user)
+                        HomeFragment.name = user.username
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     }

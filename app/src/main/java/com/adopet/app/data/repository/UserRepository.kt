@@ -7,6 +7,7 @@ import com.adopet.app.data.local.SessionManager
 import com.adopet.app.data.model.LoginUserRequest
 import com.adopet.app.data.model.RegisterUserRequest
 import com.adopet.app.data.model.LoginUserResponse
+import com.adopet.app.data.model.PostListResponse
 import com.adopet.app.data.model.UserModel
 import com.adopet.app.data.remote.ApiService
 import com.adopet.app.utils.AppExecutors
@@ -15,6 +16,8 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.first
 
 class UserRepository private constructor(
     private val apiService: ApiService,
@@ -81,6 +84,31 @@ class UserRepository private constructor(
     fun getSession(): Flow<UserModel> = pref.getSession()
 
     suspend fun deleteSession() = pref.logout()
+
+    fun getPosts(petType: String?, petBreed: String?, isAvailable: Boolean) : LiveData<Result<PostListResponse>> {
+        val result = MutableLiveData<Result<PostListResponse>>()
+        result.value = Result.Loading
+        val user  = runBlocking { pref.getSession().first() }
+        apiService.getPosts("Bearer ${user.token}", 1, 10, petType, petType, isAvailable).enqueue(object: Callback<PostListResponse>{
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body() != null) {
+                        result.value = Result.Success(response.body()!!)
+                    }
+                } else {
+                    result.value = Result.Error(response.message())
+                }
+            }
+
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
+                result.value = Result.Error(t.message.toString())
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+
+        return result
+    }
 
     companion object {
         private const val TAG = "UserRepository"

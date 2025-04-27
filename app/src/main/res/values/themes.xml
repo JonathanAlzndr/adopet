@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Adopet" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Adopet" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/pet_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/pet_secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Background -->
+        <item name="android:colorBackground">@color/pet_background_light</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/pet_text_primary</item>
+        <item name="android:textColorSecondary">@color/pet_text_secondary</item>
     </style>
 
     <style name="Theme.Adopet" parent="Base.Theme.Adopet" />

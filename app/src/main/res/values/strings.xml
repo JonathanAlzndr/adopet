@@ -11,4 +11,10 @@
     <string name="hint_belum_punya_akun">Belum punya Akun? Daftar</string>
     <string name="hint_login">Masuk</string>
     <string name="subtitle_login">Temukan hewan yang siap jadi bagian keluargamu</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hint_welcome_user">Selamat Datang, %s</string>
+    <string name="newest">Terbaru</string>
 </resources>
