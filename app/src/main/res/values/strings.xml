@@ -17,4 +17,12 @@
     <string name="title_history">Riwayat</string>
     <string name="hint_welcome_user">Selamat Datang, %s</string>
     <string name="newest">Terbaru</string>
+    <string name="camera_x">CameraX</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="analyze">Analyze</string>
+    <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
+    <string name="result">Hasil Analisis</string>
+    <string name="no_text_recognized">No text recognized!</string>
+    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
 </resources>
