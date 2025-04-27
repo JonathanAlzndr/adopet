@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
@@ -53,6 +54,16 @@ private fun getImageUriForPreQ(context: Context): Uri {
 fun createCustomTempFile(context: Context): File {
     val filesDir = context.externalCacheDir
     return File.createTempFile(timeStamp, ".jpg", filesDir)
+}
+
+fun uriToBitmap(uri: Uri, context:Context): Bitmap {
+    val resolver = context.contentResolver
+    return if (Build.VERSION.SDK_INT < 28) {
+        MediaStore.Images.Media.getBitmap(resolver, uri)
+    } else {
+        val source = ImageDecoder.createSource(resolver, uri)
+        ImageDecoder.decodeBitmap(source)
+    }
 }
 
 fun uriToFile(imageUri: Uri, context: Context): File {

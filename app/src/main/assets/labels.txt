@@ -1,0 +1,10 @@
+British
+Persian
+Ragdoll
+Russian
+Sphynx
+american_bulldog
+american_pit_bull
+chihuahua
+pomeranian
+pug

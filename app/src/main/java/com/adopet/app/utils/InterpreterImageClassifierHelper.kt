@@ -2,6 +2,7 @@ package com.adopet.app.utils
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.SystemClock
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.common.FileUtil
@@ -46,10 +47,13 @@ class InterpreterImageClassifierHelper(
     }
 
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
+        val mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
+
         val buffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
         buffer.order(ByteOrder.nativeOrder())
+
         val pixels = IntArray(imageSize * imageSize)
-        bitmap.getPixels(pixels, 0, imageSize, 0, 0, imageSize, imageSize)
+        mutableBitmap.getPixels(pixels, 0, imageSize, 0, 0, imageSize, imageSize)
 
         for (pixel in pixels) {
             val r = (pixel shr 16 and 0xFF) / 255.0f
