@@ -1,17 +1,17 @@
-package com.adopet.app.ui.notifications
+package com.adopet.app.ui.detection
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.adopet.app.databinding.FragmentNotificationsBinding
+import com.adopet.app.databinding.FragmentDetectionBinding
 
-class NotificationsFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+class DetectionFragment : Fragment() {
+
+    private var _binding: FragmentDetectionBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,10 +22,10 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val dashboardViewModel =
+            ViewModelProvider(this).get(DetectionViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentDetectionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
