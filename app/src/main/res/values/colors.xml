@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="pet_primary">#FFD7B5</color>
+    <color name="pet_secondary">#A5D8D3</color> <!-- Mint green -->
+    <color name="pet_accent">#F4A261</color> <!-- Soft orange -->
+    <color name="pet_background_light">#FFF8F0</color> <!-- Very soft cream -->
+    <color name="pet_background_dark">#2C2C2C</color> <!-- Dark for dark mode -->
+    <color name="pet_text_primary">#333333</color> <!-- Dark gray for readability -->
+    <color name="pet_text_secondary">#666666</color> <!-- Medium gray -->
 </resources>
