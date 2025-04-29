@@ -1,5 +1,6 @@
 package com.adopet.app.ui.login
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -19,7 +20,6 @@ import com.adopet.app.ui.home.HomeFragment
 import com.adopet.app.ui.register.RegisterActivity
 import com.adopet.app.utils.Result
 import com.adopet.app.utils.ViewModelFactory
-import android.Manifest
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

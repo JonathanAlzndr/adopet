@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.adopet.app.R
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.adopet.app.R
+import com.adopet.app.data.model.DataItem
 import com.adopet.app.databinding.FragmentHomeBinding
 import com.adopet.app.ui.adapter.PostAdapter
-import com.adopet.app.utils.ViewModelFactory
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.PagerSnapHelper
-import com.adopet.app.data.model.DataItem
-import com.adopet.app.data.model.PostListResponse
 import com.adopet.app.utils.Result
+import com.adopet.app.utils.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -91,8 +87,6 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = newestAdapter
         }
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(binding.rvNewestPosts)
 
         dogAdapter = PostAdapter()
         binding.rvDogPosts.apply {

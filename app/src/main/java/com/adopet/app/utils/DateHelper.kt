@@ -1,11 +1,11 @@
-package com.adopet.app.utils
+ package com.adopet.app.utils
 
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.text.ParseException
 
-object DateHelper {
+ object DateHelper {
 
     private const val INPUT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"
 
