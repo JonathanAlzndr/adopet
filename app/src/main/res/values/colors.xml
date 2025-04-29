@@ -10,4 +10,7 @@
     <color name="pet_background_dark">#2C2C2C</color> <!-- Dark for dark mode -->
     <color name="pet_text_primary">#333333</color> <!-- Dark gray for readability -->
     <color name="pet_text_secondary">#666666</color> <!-- Medium gray -->
+    <color name="green">#4CAF50</color> <!-- hijau -->
+    <color name="red">#F44336</color>   <!-- merah -->
+
 </resources>

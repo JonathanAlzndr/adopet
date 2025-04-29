@@ -1,7 +1,10 @@
 package com.adopet.app.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class PostListResponse(
 
 	@field:SerializedName("data")
@@ -9,8 +12,9 @@ data class PostListResponse(
 
 	@field:SerializedName("page")
 	val page: Page? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Page(
 
 	@field:SerializedName("totalPosts")
@@ -21,15 +25,17 @@ data class Page(
 
 	@field:SerializedName("currentPage")
 	val currentPage: Int? = null
-)
+) : Parcelable
 
+
+@Parcelize
 data class DataItem(
 
 	@field:SerializedName("petName")
 	val petName: String? = null,
 
 	@field:SerializedName("confidenceScore")
-	val confidenceScore: Any? = null,
+	val confidenceScore: Double? = null,
 
 	@field:SerializedName("petAge")
 	val petAge: Int? = null,
@@ -57,8 +63,9 @@ data class DataItem(
 
 	@field:SerializedName("postId")
 	val postId: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class PetOwner(
 
 	@field:SerializedName("phoneNumber")
@@ -72,4 +79,4 @@ data class PetOwner(
 
 	@field:SerializedName("username")
 	val username: String? = null
-)
+) : Parcelable

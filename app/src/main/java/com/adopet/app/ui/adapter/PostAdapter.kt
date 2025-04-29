@@ -1,16 +1,16 @@
 package com.adopet.app.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.adopet.app.data.model.DataItem
 import com.adopet.app.databinding.PostItemBinding
+import com.adopet.app.ui.detail.PostDetailActivity
 import com.adopet.app.utils.DateHelper
 import com.bumptech.glide.Glide
-import java.io.File
 
 class PostAdapter : ListAdapter<DataItem, PostAdapter.MyViewHolder>(DIFF_CALLBACK) {
     class MyViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +23,6 @@ class PostAdapter : ListAdapter<DataItem, PostAdapter.MyViewHolder>(DIFF_CALLBAC
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = PostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
@@ -34,11 +33,12 @@ class PostAdapter : ListAdapter<DataItem, PostAdapter.MyViewHolder>(DIFF_CALLBAC
         if (review != null) {
             holder.bind(review)
         }
-        /*
-            holder.itemView.setOnClickListener {
-                startActivity(Intent(holder.itemView.context, DetailPostActivity::class.java))
-            }
-         */
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, PostDetailActivity::class.java)
+            intent.putExtra(PostDetailActivity.EXTRA_DATA, review)
+            context.startActivity(intent)
+        }
     }
 
     companion object {
