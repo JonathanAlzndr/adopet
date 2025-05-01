@@ -1,5 +1,6 @@
 package com.adopet.app.data.remote
 
+import com.adopet.app.data.model.ChangeAvailabilityRequest
 import com.adopet.app.data.model.LoginUserRequest
 import com.adopet.app.data.model.LoginUserResponse
 import com.adopet.app.data.model.PostHistoryResponse
@@ -13,8 +14,10 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -53,6 +56,13 @@ interface ApiService {
         @Part("description") description: RequestBody,
         @Part("confidenceScore") confidenceScore: RequestBody,
         @Part image: MultipartBody.Part
-    ) : UploadAdoptionResponse
+    ): UploadAdoptionResponse
+
+    @PATCH("/api/posts/{postId}/availability")
+    fun changeAvailability(
+        @Header("Authorization") authHeader: String,
+        @Path("postId") postId: Long,
+        @Body request: ChangeAvailabilityRequest
+    ) : Call<String>
 
 }

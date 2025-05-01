@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.adopet.app.data.local.SessionManager
+import com.adopet.app.data.model.ChangeAvailabilityRequest
 import com.adopet.app.data.model.LoginUserRequest
 import com.adopet.app.data.model.LoginUserResponse
 import com.adopet.app.data.model.PostHistoryResponse
@@ -180,7 +181,8 @@ class UserRepository private constructor(
         val petTypeBody = petType.toRequestBody("text/plain".toMediaType())
         val petBreedBody = petBreed.toRequestBody("text/plain".toMediaType())
         val petAgeBody = petAge.toString().toRequestBody("text/plain".toMediaType())
-        val confidenceScoreBody = confidenceScore.toString().toRequestBody("text/plain".toMediaType())
+        val confidenceScoreBody =
+            confidenceScore.toString().toRequestBody("text/plain".toMediaType())
 
         try {
             val successResponse =
@@ -200,6 +202,28 @@ class UserRepository private constructor(
             val errorResponse = Gson().fromJson(errorBody, UploadAdoptionResponse::class.java)
             emit(Result.Error((errorResponse ?: "errors").toString()))
         }
+    }
+
+    fun changeAvailability(postId: Long, availability: Boolean): LiveData<Result<String>> {
+
+        val result = MutableLiveData<Result<String>>()
+        val userToken = runBlocking { pref.getSession().first() }.token
+        val request = ChangeAvailabilityRequest(availability)
+
+        result.value = Result.Loading
+        apiService.changeAvailability("Bearer $userToken", postId, request)
+            .enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    result.value = Result.Success(response.body()!! + response.message())
+                    Log.d(TAG, "onResponse: ${response.body()!! + response.message()}")
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                   // result.value = Result.Error("${t.message}")
+                }
+            })
+
+        return result
     }
 
     companion object {

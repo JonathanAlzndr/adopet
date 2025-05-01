@@ -1,5 +1,6 @@
 package com.adopet.app.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adopet.app.data.model.PostsItem
 import com.adopet.app.databinding.PostItemBinding
 import com.adopet.app.ui.adapter.PostAdapter.MyViewHolder
+import com.adopet.app.ui.history.detail.HistoryDetailActivity
 import com.adopet.app.utils.DateHelper
 import com.bumptech.glide.Glide
 
@@ -33,11 +35,12 @@ class HistoryAdapter : ListAdapter<PostsItem, HistoryAdapter.MyViewHolder>(DIFF_
         if (review != null) {
             holder.bind(review)
         }
-        /*
-            holder.itemView.setOnClickListener {
-                startActivity(Intent(holder.itemView.context, DetailPostActivity::class.java))
-            }
-         */
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, HistoryDetailActivity::class.java)
+            intent.putExtra(HistoryDetailActivity.EXTRA_DATA, review)
+            context.startActivity(intent)
+        }
     }
 
     companion object {

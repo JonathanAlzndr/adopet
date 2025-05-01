@@ -7,6 +7,7 @@ import com.adopet.app.data.repository.UserRepository
 import com.adopet.app.di.Injection
 import com.adopet.app.ui.detection.DetectionViewModel
 import com.adopet.app.ui.history.HistoryViewModel
+import com.adopet.app.ui.history.detail.HistoryDetailViewModel
 import com.adopet.app.ui.home.HomeViewModel
 import com.adopet.app.ui.login.LoginViewModel
 import com.adopet.app.ui.post.PostViewModel
@@ -33,6 +34,9 @@ class ViewModelFactory private constructor(private val userRepository: UserRepos
         }
         if(modelClass.isAssignableFrom(PostViewModel::class.java)) {
             return PostViewModel(userRepository) as T
+        }
+        if(modelClass.isAssignableFrom(HistoryDetailViewModel::class.java)) {
+            return HistoryDetailViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
