@@ -71,6 +71,8 @@ dependencies {
         exclude(group = "org.tensorflow", module = "tensorflow-lite")
     }
 
+    implementation(libs.androidx.core.splashscreen)
+
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
