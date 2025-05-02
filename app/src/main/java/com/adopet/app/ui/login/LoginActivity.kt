@@ -81,7 +81,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
 
-
     }
 
     private fun validateInput(username: String, password: String): Boolean {
