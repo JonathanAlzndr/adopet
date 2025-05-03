@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -26,12 +25,11 @@ import com.adopet.app.utils.ViewModelFactory
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var viewModel: HistoryViewModel
     private lateinit var historyAdapter: HistoryAdapter
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private var menuProvider: MenuProvider? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,8 +46,7 @@ class HistoryFragment : Fragment() {
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
 
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
+        menuProvider = object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.app_bar_menu, menu)
             }
@@ -64,28 +61,23 @@ class HistoryFragment : Fragment() {
                         )
                         true
                     }
+
                     else -> false
                 }
             }
-        })
+        }
+
+        requireActivity().addMenuProvider(menuProvider!!, viewLifecycleOwner)
+
         historyAdapter = HistoryAdapter()
-        val gridColumnCount = 2
-        binding.rvHistory.layoutManager = GridLayoutManager(requireActivity(), gridColumnCount)
+        binding.rvHistory.layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.rvHistory.adapter = historyAdapter
 
-        viewModel.getHistory().observe(requireActivity()) { result ->
+        viewModel.getHistory().observe(viewLifecycleOwner) { result ->
             when (result) {
-                is Result.Error -> {
-                    showToast(result.error)
-                }
-
-                Result.Loading -> {
-
-                }
-
-                is Result.Success -> {
-                    setupData(result.data.posts)
-                }
+                is Result.Error -> showToast(result.error)
+                Result.Loading -> {}
+                is Result.Success -> setupData(result.data.posts)
             }
         }
     }
@@ -93,6 +85,10 @@ class HistoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        menuProvider?.let {
+            requireActivity().removeMenuProvider(it)
+        }
+        menuProvider = null
     }
 
     private fun setupData(data: List<PostsItem?>?) {
