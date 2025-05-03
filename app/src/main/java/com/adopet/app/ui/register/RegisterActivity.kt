@@ -21,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.root.applyDefaultSystemPadding()
 
+        supportActionBar?.hide()
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
