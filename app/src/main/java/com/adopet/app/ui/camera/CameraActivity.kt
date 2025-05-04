@@ -1,25 +1,24 @@
 package com.adopet.app.ui.camera
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.CameraSelector
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.adopet.app.R
-import com.adopet.app.databinding.ActivityCameraBinding
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.core.resolutionselector.AspectRatioStrategy
 import androidx.camera.core.resolutionselector.ResolutionSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.adopet.app.R
+import com.adopet.app.databinding.ActivityCameraBinding
 import com.adopet.app.utils.InterpreterImageClassifierHelper
 import java.text.NumberFormat
 import java.util.concurrent.Executors
@@ -94,7 +93,7 @@ class CameraActivity : AppCompatActivity() {
 
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
             val preview = Preview.Builder().build().also {
-                it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+                it.surfaceProvider = binding.viewFinder.surfaceProvider
             }
             try {
                 cameraProvider.unbindAll()
