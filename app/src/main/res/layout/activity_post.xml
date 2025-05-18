@@ -63,6 +63,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             tools:text="Cat"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -101,6 +102,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_pet_name"
+                    android:textColor="?attr/colorOnSurface"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
@@ -115,6 +117,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_pet_age"
                     android:layout_width="match_parent"
+                    android:textColor="?attr/colorOnSurface"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:textSize="16sp" />
@@ -131,6 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minLines="3"
+                    android:textColor="?attr/colorOnSurface"
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:textSize="16sp" />

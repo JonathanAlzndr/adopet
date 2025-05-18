@@ -56,7 +56,7 @@ class PostDetailActivity : AppCompatActivity() {
             binding.tvAvailability.setTextColor(
                 ContextCompat.getColor(
                     this,
-                    if (data.available == true) R.color.green else R.color.red
+                    if (data.available == true) R.color.colorPrimary else R.color.colorAccent
                 )
             )
             binding.tvOwnerName.text = data.petOwner?.username

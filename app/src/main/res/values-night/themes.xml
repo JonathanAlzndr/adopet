@@ -2,19 +2,18 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Adopet" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">@color/pet_primary</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
 
-        <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/pet_secondary</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <!-- Warna sekunder -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
 
-        <!-- Background -->
-        <item name="android:colorBackground">@color/pet_background_dark</item>
-
-        <!-- Text colors -->
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/pet_text_secondary</item>
+        <!-- Latar dan teks -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnBackground">@color/colorOnPrimary</item>
+        <item name="colorOnSurface">@color/colorOnSecondary</item>
     </style>
 </resources>

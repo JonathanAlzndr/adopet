@@ -40,8 +40,7 @@ class HomeFragment : Fragment() {
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
-        val welcomeMessage = getString(R.string.hint_welcome_user, name)
-        binding.tvWelcome.text = welcomeMessage
+        binding.tvWelcome.text = getString(R.string.hint_welcome_user)
 
         setupRecyclerViews()
 

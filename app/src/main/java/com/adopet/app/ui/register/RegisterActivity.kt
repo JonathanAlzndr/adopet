@@ -1,14 +1,15 @@
 package com.adopet.app.ui.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.adopet.app.databinding.ActivityRegisterBinding
+import com.adopet.app.ui.login.LoginActivity
 import com.adopet.app.utils.Result
 import com.adopet.app.utils.ViewModelFactory
-import com.adopet.app.utils.applyDefaultSystemPadding
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -19,11 +20,14 @@ class RegisterActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.root.applyDefaultSystemPadding()
-
         supportActionBar?.hide()
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
+
+
+        binding.tvLogin.setOnClickListener {
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+        }
 
         binding.btnRegister.setOnClickListener {
             val username = binding.etUsername.text.toString().trim()

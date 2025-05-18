@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="@android:color/white"
     tools:context=".ui.history.detail.HistoryDetailActivity">
 
@@ -72,6 +73,7 @@
             android:id="@+id/tv_pet_type"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textColor="?attr/colorOnSurface"
             android:layout_height="wrap_content"
             tools:text="Cat"
             android:textSize="16sp"
@@ -82,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ketersediaan"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -109,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Snowy"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp" />
@@ -119,6 +123,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Usia: 3 tahun"
                 android:textSize="16sp"
+                android:textColor="?attr/colorOnSurface"
                 android:layout_marginBottom="8dp" />
 
             <TextView
@@ -128,8 +133,8 @@
                 android:drawablePadding="8dp"
                 tools:text="Snowy adalah kucing yang ceria dan suka bermain."
                 android:textSize="16sp"
-                android:layout_marginBottom="20dp"
-                app:drawableStartCompat="@drawable/baseline_info_24" />
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="20dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_change_availability"

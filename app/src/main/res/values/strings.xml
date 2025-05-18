@@ -15,7 +15,7 @@
     <string name="title_home">Beranda</string>
     <string name="title_detection">Deteksi</string>
     <string name="title_history">Riwayat</string>
-    <string name="hint_welcome_user">Selamat Datang, %s</string>
+    <string name="hint_welcome_user">Mau adopsi apa hari ini?</string>
     <string name="newest">Terbaru</string>
     <string name="camera_x">Langsung</string>
     <string name="camera">Kamera</string>
@@ -32,4 +32,5 @@
     <string name="call_pet_owner">Hubungi Pemilik</string>
     <string name="upload">Unggah</string>
     <string name="logout">Keluar</string>
+    <string name="hint_detection">Gunakan pencahayaan yang cukup\ndan pastikan objek terlihat jelas.</string>
 </resources>

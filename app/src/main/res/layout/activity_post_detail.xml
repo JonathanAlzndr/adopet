@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="0dp"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="@android:color/white"
     tools:context=".ui.detail.PostDetailActivity">
 
@@ -73,6 +73,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             tools:text="Cat"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -94,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Available"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -120,6 +122,7 @@
 
             <TextView
                 android:id="@+id/tv_pet_name"
+                android:textColor="?attr/colorOnSurface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Snowy"
@@ -132,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Usia: 3 tahun"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
 
@@ -141,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
                 tools:text="Pemilik: John Doe"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"
                 app:drawableStartCompat="@drawable/baseline_person_24" />
@@ -152,6 +157,7 @@
                 android:drawablePadding="8dp"
                 tools:text="Snowy adalah kucing yang ceria dan suka bermain."
                 android:textSize="16sp"
+                android:textColor="?attr/colorOnSurface"
                 android:layout_marginBottom="20dp"
                 app:drawableStartCompat="@drawable/baseline_info_24" />
 
